@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0">
+	<channel>
+		<title>Noelani's Blog</title>
+		<link>http://blog.west.spy.net/</link>
+		<language>en-us</language>
+		<generator>spy blog</generator>
+		<managingEditor>noelani@spy.net</managingEditor>
+		<webMaster>dustin@spy.net</webMaster>
+		<lastBuildDate>{% now "D, d M Y H:i:s" %} GMT</lastBuildDate>
+		<ttl>86400</ttl>
+
+		{% for post in posts %}
+			<item>
+				<link>http://blog.west.spy.net/post/{{ post.post_date.year }}/{{ post.post_date.month }}/{{ post.post_date.day }}/{{ post.id }}</link>
+				<title>{{post.title}}</title>
+				<pubDate>{{ post.post_date|date:"D, d M Y H:i:s" }} GMT</pubDate>
+				<description>
+					{{ post.contents|striptags|truncatewords:"60" }}
+				</description>
+			</item>
+		{% endfor %}
+
+	</channel>
+</rss>

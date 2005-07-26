@@ -1,0 +1,21 @@
+{% extends "base" %}
+
+{% block altcontent %}
+<ul id="blogtoc" class="darkbox">
+	{% for post in posts %}
+		<li><a href="#post{{post.id}}">{{post.title}}</a></li>
+	{% endfor %}
+</ul>
+{% endblock %}
+
+{% block content %}
+
+	{% for post in posts %}
+		<a name="post{{post.id}}"></a>
+		<div class="blogentry">
+			<div class="date">{{post.post_date}}</div>
+			<div class="title"><a href="/post/{{post.post_date.year}}/{{post.post_date.month}}/{{post.post_date.day}}/{{post.id}}/">{{post.title}}</a></div> 
+			{{post.contents}}
+		</div>
+	{% endfor %}
+{% endblock %}

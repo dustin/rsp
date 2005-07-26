@@ -1,0 +1,21 @@
+{% extends "base-extended" %}
+
+{% block extendedtitle %}Archive - {{month.year}}/{{month.month}}{% endblock %}
+
+{% block content %}
+
+<h1>Archive for {{month.year}}/{{month.month}}</h1>
+
+<ul id="archivelist">
+{% for p in object_list %}
+	<li>
+		<a href='/post/{{p.post_date.year}}/{{p.post_date.month}}/{{p.post_date.day}}/{{p.id}}'>{{p.title}}</a>
+		-- {{p.post_date}}
+		<blockquote>
+			<p class="first">{{p.contents|striptags|truncatewords:"60"}}</p>
+		</blockquote>
+		</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

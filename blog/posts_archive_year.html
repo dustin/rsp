@@ -1,0 +1,15 @@
+{% extends "base-extended" %}
+
+{% block extendedtitle %}Archive - {{year}}{% endblock %}
+
+{% block content %}
+
+<h1>Archive for {{year}}</h1>
+
+<ul>
+{% for month in date_list %}
+	<li><a href='/archive/{{year}}/{{month|date:"M"}}/'>{{month|date:"M"}}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}
