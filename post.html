@@ -1,11 +1,11 @@
 {% extends "base-extended" %}
-{% block extendedtitle %}{{post.title}}{% endblock %}
+{% block extendedtitle %}{{object.title}}{% endblock %}
 
 {% block content %}
 <div class="blogentry">
-	<div class="date">{{post.post_date}}</div>
-	<div class="title">{{post.title}}</div>
+	<div class="date">{{object.post_date}}</div>
+	<div class="title">{{object.title}}</div>
 
-	{{post.contents}}
+	{{object.contents}}
 </div>
 {% endblock %}
