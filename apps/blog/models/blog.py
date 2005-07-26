@@ -16,7 +16,7 @@ class Post(meta.Model):
     fields = (
         meta.DateTimeField('post_date', 'date posted'),
         meta.CharField('title', maxlength=128),
-        meta.ManyToManyField(Tag),
+        meta.ManyToManyField(Tag, blank=True, null=True),
         meta.BooleanField('released'),
         meta.TextField('contents'),
     )
