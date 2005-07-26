@@ -18,22 +18,3 @@ def showRecentReleased(request, tmpl='index', ctype="text/html"):
         'posts': post_list
     })
     return HttpResponse(t.render(c), ctype)
-
-def showRecentAll(request, tmpl='index', ctype="text/html"):
-    post_list = posts.get_list(order_by=['-post_date', '-id'], limit=10)
-    t = template_loader.get_template(tmpl)
-    c = Context(request, {
-        'posts': post_list
-    })
-    return HttpResponse(t.render(c), ctype)
-
-def getArticle(request, year, month, day, post_id):
-    try:
-        p = posts.get_object(id__exact=post_id)
-    except posts.PostDoesNotExist:
-        raise Http404
-    t = template_loader.get_template('post')
-    c = Context(request, {
-        'post': p,
-    })
-    return HttpResponse(t.render(c))
