@@ -25,7 +25,7 @@ urlpatterns = patterns('',
     (r'^rss/', 'blog.apps.blog.views.fetch.showRecentReleased',
         {'tmpl': 'rss', 'ctype': 'text/xml'}),
     (r'^all/', 'django.views.generic.date_based.archive_index',
-        dict(info_dict, extra_lookup_kwargs={})),
+        dict(info_dict, template_name='index', extra_lookup_kwargs={})),
     (r'^$', 'django.views.generic.date_based.archive_index',
         dict(info_dict, template_name='index', num_latest=10)),
 )
