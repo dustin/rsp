@@ -9,7 +9,7 @@
 <ul id="archivelist">
 {% for p in object_list %}
 	<li>
-		<a href='/post/{{p.post_date.year}}/{{p.post_date.month}}/{{p.post_date.day}}/{{p.id}}/'>{{p.title}}</a>
+		<a href='/post/{{p.post_date|date:"Y/M/d"|lower}}/{{p.id}}/'>{{p.title}}</a>
 		-- {{p.post_date}}
 		<blockquote>
 			<p class="first">{{p.contents|striptags|truncatewords:"60"}}</p>

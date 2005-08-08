@@ -31,7 +31,7 @@
 	<a name="post{{post.id}}"></a>
 	<div class="blogentry">
 		<div class="date">{{post.post_date}}</div>
-		<div class="title"><a href="/post/{{post.post_date.year}}/{{post.post_date.month}}/{{post.post_date.day}}/{{post.id}}/">{{post.title}}</a></div>
+		<div class="title"><a href="/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.id}}/">{{post.title}}</a></div>
 		{{ post.contents }}
 	</div>
 {% endfor %}
