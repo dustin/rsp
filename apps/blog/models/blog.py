@@ -9,6 +9,8 @@ class Tag(meta.Model):
 
     admin = meta.Admin()
 
+    ordering = ['name']
+
     def __repr__(self):
         return self.name
 
@@ -21,9 +23,12 @@ class Post(meta.Model):
         meta.TextField('contents'),
     )
 
+    ordering = ['-post_date']
+
     admin = meta.Admin(
-        search_fields=('title', 'contents'),
-        list_filter=('post_date', ),
+        search_fields=('title', 'contents',),
+        list_filter=('post_date', 'released',),
+        list_display=('post_date', 'title', 'released',)
         )
 
     def __repr__(self):
