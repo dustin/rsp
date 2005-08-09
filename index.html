@@ -29,7 +29,7 @@
 
 {% for post in latest %}
 	<a name="post{{post.id}}"></a>
-	<div class="blogentry">
+	<div class="blogentry {% if not post.released %}unreleased{% endif %}">
 		<div class="date">{{post.post_date}}</div>
 		<div class="title"><a href="/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.id}}/">{{post.title}}</a></div>
 		{{ post.contents }}
