@@ -14,7 +14,7 @@
 
 		{% for post in posts %}
 			<item>
-				<link>http://blog.west.spy.net/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.id}}/</link>
+				<link>http://blog.west.spy.net/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.slug}}/</link>
 				<title>{{post.title}}</title>
 				<pubDate>{{ post.post_date|date:"D, d M Y H:i:s" }} GMT</pubDate>
 				<description>

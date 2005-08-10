@@ -31,7 +31,7 @@
 	<a name="post{{post.id}}"></a>
 	<div class="blogentry {% if not post.released %}unreleased{% endif %}">
 		<div class="date">{{post.post_date}}</div>
-		<div class="title"><a href="/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.id}}/">{{post.title}}</a></div>
+		<div class="title"><a href="/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.slug}}/">{{post.title}}</a></div>
 		{{ post.contents }}
 	</div>
 {% endfor %}
