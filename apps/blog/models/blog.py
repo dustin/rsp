@@ -18,6 +18,7 @@ class Post(meta.Model):
     fields = (
         meta.DateTimeField('post_date', 'date posted'),
         meta.CharField('title', maxlength=128),
+        meta.SlugField('slug', prepopulate_from=['title']),
         meta.ManyToManyField(Tag, blank=True, null=True),
         meta.BooleanField('released'),
         meta.TextField('contents'),
@@ -28,7 +29,7 @@ class Post(meta.Model):
     admin = meta.Admin(
         search_fields=('title', 'contents',),
         list_filter=('post_date', 'released',),
-        list_display=('post_date', 'title', 'released',)
+        list_display=('post_date', 'title', 'slug', 'released',)
         )
 
     def __repr__(self):

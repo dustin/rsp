@@ -17,9 +17,9 @@ urlpatterns = patterns('',
         'django.views.generic.date_based.archive_year', info_dict),
 
     # Get an individual post
-    (r'^post/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\d+)/(?P<object_id>\d+)/$',
+    (r'^post/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\d+)/(?P<slug>\w+)/$',
         'django.views.generic.date_based.object_detail',
-            dict(info_dict, template_name='post',
+            dict(info_dict, template_name='post', slug_field='slug',
             extra_lookup_kwargs={})),
 
     (r'^rss/', 'blog.apps.blog.views.fetch.showRecentReleased',
