@@ -2,7 +2,7 @@
 {% block extendedtitle %}{{object.title}}{% endblock %}
 
 {% block content %}
-<div class="blogentry">
+<div class="blogentry {% if not object.released %}unreleased{% endif %}">
 	<div class="date">{{object.post_date}}</div>
 	<div class="title">{{object.title}}</div>
 
