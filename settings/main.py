@@ -6,6 +6,11 @@ ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
 
+CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+CACHE_MIDDLEWARE_GZIP = True
+CACHE_MIDDLEWARE_KEY_PREFIX = "blog"
+CACHE_MIDDLEWARE_SECONDS = 300
+
 MANAGERS = ADMINS
 
 LANGUAGE_CODE = 'en-us'
@@ -21,6 +26,10 @@ SITE_ID = 1
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = ''
+
+MIDDLEWARE_CLASSES = (
+    "django.middleware.cache.CacheMiddleware",
+)
 
 # URL that handles the media served from MEDIA_ROOT.
 # Example: "http://media.lawrence.com"
