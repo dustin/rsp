@@ -28,6 +28,7 @@ SITE_ID = 1
 MEDIA_ROOT = ''
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.common.CommonMiddleware',
     "django.middleware.cache.CacheMiddleware",
 )
 
