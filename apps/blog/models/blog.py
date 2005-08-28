@@ -3,34 +3,34 @@ from django.core import meta
 # Create your models here.
 
 class Tag(meta.Model):
-    fields = (
-        meta.CharField('name', maxlength=32),
-    )
 
-    admin = meta.Admin()
+    name=meta.CharField(maxlength=32)
 
-    ordering = ['name']
+    class META:
+        admin = meta.Admin()
+
+        ordering = ['name']
 
     def __repr__(self):
         return self.name
 
 class Post(meta.Model):
-    fields = (
-        meta.DateTimeField('post_date', 'date posted'),
-        meta.CharField('title', maxlength=128),
-        meta.SlugField('slug', prepopulate_from=['title']),
-        meta.ManyToManyField(Tag, blank=True, null=True),
-        meta.BooleanField('released'),
-        meta.TextField('contents'),
-    )
 
-    ordering = ['-post_date']
+    post_date=meta.DateTimeField('date posted')
+    title=meta.CharField(maxlength=128)
+    slug=meta.SlugField(prepopulate_from=['title'])
+    tags=meta.ManyToManyField(Tag, blank=True, null=True)
+    released=meta.BooleanField()
+    contents=meta.TextField()
 
-    admin = meta.Admin(
-        search_fields=('title', 'contents',),
-        list_filter=('post_date', 'released',),
-        list_display=('post_date', 'title', 'slug', 'released',)
-        )
+    class META:
+        ordering = ['-post_date']
+
+        admin = meta.Admin(
+            search_fields=('title', 'contents',),
+            list_filter=('post_date', 'released',),
+            list_display=('post_date', 'title', 'slug', 'released',)
+            )
 
     def __repr__(self):
         return self.title + " on " + self.post_date.ctime()
