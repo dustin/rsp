@@ -23,6 +23,13 @@ class Post(meta.Model):
     released=meta.BooleanField()
     contents=meta.TextField()
 
+    def get_full_path(self):
+        return '%s/%s/' % \
+            (self.post_date.strftime("%Y/%b/%d").lower(), self.slug)
+
+    def get_absolute_url(self):
+        return '/post/' + self.get_full_path()
+
     class META:
         ordering = ['-post_date']
 

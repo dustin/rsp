@@ -22,10 +22,9 @@ urlpatterns = patterns('',
             dict(info_dict, template_name='post', slug_field='slug',
             extra_lookup_kwargs={})),
 
-    (r'^rss/', 'blog.apps.blog.views.fetch.showRecentReleased',
-        {'tmpl': 'rss', 'ctype': 'text/xml'}),
-    (r'^rssfull/', 'blog.apps.blog.views.fetch.showRecentReleased',
-        {'tmpl': 'rssfull', 'ctype': 'text/xml'}),
+    # Django RSS
+    (r'^rss/', include('django.conf.urls.rss')),
+
     (r'^all/', 'django.views.generic.date_based.archive_index',
         dict(info_dict, template_name='index', extra_lookup_kwargs={})),
     (r'^$', 'django.views.generic.date_based.archive_index',
