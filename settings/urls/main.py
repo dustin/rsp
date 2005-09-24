@@ -23,7 +23,10 @@ urlpatterns = patterns('',
             extra_lookup_kwargs={})),
 
     # Django RSS
-    (r'^rss/', include('django.conf.urls.rss')),
+    # The following two are for backwards compatibility.
+    (r'^rss/', 'django.views.rss.rss.feed', {'slug': 'summary'}),
+    (r'^rssfull/', 'django.views.rss.rss.feed', {'slug': 'full'}),
+    (r'^rss/(?P<slug>\w+)/', 'django.views.rss.rss.feed'),
 
     (r'^all/', 'django.views.generic.date_based.archive_index',
         dict(info_dict, template_name='index', extra_lookup_kwargs={})),
