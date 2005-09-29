@@ -39,7 +39,7 @@
 		<div class="title"><a href="/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.slug}}/">{{post.title}}</a></div>
 		{{ post.contents }}
 		<p class="postmeta">
-			<a href="/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.slug}}/">
+			<a href="/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.slug}}/#comments">
 			{{ comment_count }} comment{{ comment_count|pluralize }}
 			</a>
 		</p>
