@@ -1,6 +1,18 @@
 {% extends "base-extended" %}
 {% block extendedtitle %}{{object.title}}{% endblock %}
 
+{% block extrastyle %}
+<style type="text/css">
+.comment {
+}
+.commenttext {
+	font-size: smaller;
+	padding-left: 2em;
+	border-bottom: solid 1px;
+}
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="blogentry {% if not object.released %}unreleased{% endif %}">
 	<div class="date">{{object.post_date}}</div>
@@ -8,4 +20,29 @@
 
 	{{object.contents}}
 </div>
+
+{% load comments %}
+
+{% get_free_comment_list for blog.posts object.id as comment_list %}
+
+<h2>Comments</h2>
+
+{% for comment in comment_list %}
+<div class="comment" id="c{{ comment.id }}">
+	<a name="c{{ comment.id }}"/>
+	<h3>{{ comment.person_name }}, at
+	{{ comment.submit_date|date:"F j, Y" }} {{ comment.submit_date|date:"P" }},
+	said:</h3>
+	<div class="commenttext">
+		{{ comment.comment|escape|urlizetrunc:"40"|linebreaks }}
+	</div>
+</div>
+{% endfor %}
+
+<h2>Post a Comment</h2>
+
+<div id="commentform">
+{% free_comment_form for blog.posts object.id %}
+</div>
+
 {% endblock %}

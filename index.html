@@ -25,14 +25,24 @@
 
 {% endblock %}
 
+{% load comments %}
+
 {% block content %}
 
 {% for post in latest %}
+
+	{% get_free_comment_count for blog.posts post.id as comment_count %}
+
 	<a name="post{{post.id}}"></a>
 	<div class="blogentry {% if not post.released %}unreleased{% endif %}">
 		<div class="date">{{post.post_date}}</div>
 		<div class="title"><a href="/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.slug}}/">{{post.title}}</a></div>
 		{{ post.contents }}
+		<p class="postmeta">
+			<a href="/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.slug}}/">
+			{{ comment_count }} comment{{ comment_count|pluralize }}
+			</a>
+		</p>
 	</div>
 {% endfor %}
 
