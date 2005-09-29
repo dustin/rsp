@@ -28,6 +28,8 @@ urlpatterns = patterns('',
     (r'^rssfull/', 'django.views.rss.rss.feed', {'slug': 'full'}),
     (r'^rss/(?P<slug>\w+)/', 'django.views.rss.rss.feed'),
 
+    (r'^comments/', include('django.contrib.comments.urls.comments')),
+
     (r'^all/', 'django.views.generic.date_based.archive_index',
         dict(info_dict, template_name='index', extra_lookup_kwargs={})),
     (r'^$', 'django.views.generic.date_based.archive_index',

@@ -48,4 +48,5 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     'blog.apps.blog',
+    'django.contrib.comments',
 )
