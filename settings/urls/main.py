@@ -24,7 +24,7 @@ urlpatterns = patterns('',
 
     # Django RSS
     # The following two are for backwards compatibility.
-    (r'^rss/', 'django.views.rss.rss.feed', {'slug': 'summary'}),
+    (r'^rss/$', 'django.views.rss.rss.feed', {'slug': 'summary'}),
     (r'^rssfull/', 'django.views.rss.rss.feed', {'slug': 'full'}),
     (r'^rss/(?P<slug>\w+)/', 'django.views.rss.rss.feed'),
 
