@@ -19,7 +19,7 @@ class Post(meta.Model):
     post_date=meta.DateTimeField('date posted')
     title=meta.CharField(maxlength=128)
     slug=meta.SlugField(prepopulate_from=['title'])
-    tags=meta.ManyToManyField(Tag, blank=True, null=True)
+    tags=meta.ManyToManyField(Tag)
     released=meta.BooleanField()
     contents=meta.TextField()
 
