@@ -31,7 +31,7 @@ class Post(meta.Model):
         return '/post/' + self.get_full_path()
 
     class META:
-        ordering = ['-post_date']
+        ordering = ['-post_date', '-id']
 
         admin = meta.Admin(
             search_fields=('title', 'contents',),
