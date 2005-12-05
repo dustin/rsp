@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+import blog.feeds
 
 # Base for all released things
 info_dict = {
@@ -6,6 +7,13 @@ info_dict = {
     'module_name': 'posts',
     'date_field': 'post_date',
     'extra_lookup_kwargs': {'released__exact': True},
+}
+
+feeds = {
+    'full': blog.feeds.Full,
+    'summary': blog.feeds.Summary,
+    'fullunreleased': blog.feeds.Unreleased,
+    'comments': blog.feeds.Comments,
 }
 
 urlpatterns = patterns('',
@@ -24,14 +32,21 @@ urlpatterns = patterns('',
 
     # Django RSS
     # The following two are for backwards compatibility.
-    (r'^rss/$', 'django.views.rss.rss.feed', {'slug': 'summary'}),
-    (r'^rssfull/', 'django.views.rss.rss.feed', {'slug': 'full'}),
-    (r'^rss/(?P<slug>\w+)/', 'django.views.rss.rss.feed'),
+    # (r'^rss/$', 'django.views.rss.rss.feed', {'slug': 'summary'}),
+    # (r'^rssfull/', 'django.views.rss.rss.feed', {'slug': 'full'}),
+    # (r'^rss/(?P<slug>\w+)/', 'django.views.rss.rss.feed'),
+    (r'^rss/$', 'django.contrib.syndication.views.feed',
+        {'url': 'summary', 'feed_dict': feeds}),
+    (r'^rssfull/', 'django.contrib.syndication.views.feed',
+        {'url': 'full', 'feed_dict': feeds}),
+    (r'^rss/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',
+        {'feed_dict': feeds}),
 
     (r'^comments/', include('django.contrib.comments.urls.comments')),
 
     (r'^all/', 'django.views.generic.date_based.archive_index',
         dict(info_dict, template_name='index', extra_lookup_kwargs={})),
+    (r'^admin/', include('django.contrib.admin.urls.admin')),
     (r'^$', 'django.views.generic.date_based.archive_index',
         dict(info_dict, template_name='index', num_latest=10)),
 )

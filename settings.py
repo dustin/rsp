@@ -15,11 +15,8 @@ MANAGERS = ADMINS
 
 LANGUAGE_CODE = 'en-us'
 
-DATABASE_ENGINE = 'postgresql' # 'postgresql', 'mysql', or 'sqlite3'.
-DATABASE_NAME = 'blog'             # Or path to database file if using sqlite3.
-DATABASE_USER = 'blog'             # Not used with sqlite3.
-DATABASE_PASSWORD = 'blogpw'         # Not used with sqlite3.
-DATABASE_HOST = 'db'             # Set to empty string for localhost. Not used with sqlite3.
+DATABASE_ENGINE = 'sqlite3' # 'postgresql', 'mysql', or 'sqlite3'.
+DATABASE_NAME = '/data/web/sqlite/blog.db'
 
 SITE_ID = 1
 
@@ -29,6 +26,7 @@ MEDIA_ROOT = ''
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.sessions.SessionMiddleware',
     "django.middleware.cache.CacheMiddleware",
 )
 
@@ -39,7 +37,12 @@ MEDIA_URL = ''
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'hwrb#n(%$!x8a($+x&@50mavo!(&nr$%$74%$_q1_!o==-c)9s'
 
-ROOT_URLCONF = 'blog.settings.urls.main'
+ROOT_URLCONF = 'blog.urls'
+
+TEMPLATE_LOADERS = (
+    'django.core.template.loaders.filesystem.load_template_source',
+    'django.core.template.loaders.app_directories.load_template_source',
+)
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates".
@@ -49,4 +52,5 @@ TEMPLATE_DIRS = (
 INSTALLED_APPS = (
     'blog.apps.blog',
     'django.contrib.comments',
+    'django.contrib.admin',
 )
