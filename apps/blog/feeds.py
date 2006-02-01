@@ -39,3 +39,9 @@ class Unreleased(Full):
 class Comments(feeds.LatestFreeCommentsFeed):
     title = "Noelani's Recent Comments"
     description = "Recent comments on Noelani's blog"
+
+    def item_author_name(self, item):
+        return item.person_name
+
+    def item_pubdate(self, item):
+        return item.submit_date
