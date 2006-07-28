@@ -10,15 +10,15 @@ from django.contrib.comments import feeds
 from django.models.blog import posts
 
 class Full(Feed):
-    title = "Noelani's Blog - Full Posts"
+    title = "RockStarProgrammer - Full Posts"
     link = "/"
-    description = "Stuff that's on Noelani's mind"
+    description = "Rants of an accidental Rock Star Programmer"
 
-    author_name = 'Noelani Sallings'
+    author_name = 'Dustin Sallings'
 
-    author_email = 'noelani@spy.net'
+    author_email = 'dustin@spy.net'
 
-    author_link = 'http://bleu.west.spy.net/~noelani/'
+    author_link = 'http://bleu.west.spy.net/~dustin/'
 
     def item_pubdate(self, item):
         return item.post_date
@@ -28,17 +28,17 @@ class Full(Feed):
             order_by=('-post_date', '-id'), limit=10)
 
 class Summary(Full):
-    title = "Noelani's Blog - Post Summaries"
+    title = "RockStarProgrammer - Post Summaries"
 
 class Unreleased(Full):
-    title = "Noelani's Blog - Unreleased"
+    title = "RockStarProgrammer - Unreleased"
     
     def items(self):
         return posts.get_list(order_by=('-post_date', '-id'), limit=10)
 
 class Comments(feeds.LatestFreeCommentsFeed):
-    title = "Noelani's Recent Comments"
-    description = "Recent comments on Noelani's blog"
+    title = "RockStarProgrammer Recent Comments"
+    description = "Recent comments at RockStarProgrammer"
 
     def item_author_name(self, item):
         return item.person_name
