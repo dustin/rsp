@@ -8,7 +8,7 @@ ADMINS = (
 
 CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 CACHE_MIDDLEWARE_GZIP = True
-CACHE_MIDDLEWARE_KEY_PREFIX = "blog"
+CACHE_MIDDLEWARE_KEY_PREFIX = "rockstar"
 CACHE_MIDDLEWARE_SECONDS = 60
 
 MANAGERS = ADMINS
@@ -16,7 +16,7 @@ MANAGERS = ADMINS
 LANGUAGE_CODE = 'en-us'
 
 DATABASE_ENGINE = 'sqlite3' # 'postgresql', 'mysql', or 'sqlite3'.
-DATABASE_NAME = '/data/web/sqlite/blog.db'
+DATABASE_NAME = '/data/web/sqlite/rockstar.db'
 
 SITE_ID = 1
 
@@ -46,7 +46,7 @@ TEMPLATE_LOADERS = (
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates".
-    "/data/web/django/templates/blog/",
+    "/data/web/django/templates/rockstar/",
 )
 
 INSTALLED_APPS = (
