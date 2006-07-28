@@ -3,7 +3,7 @@
 {% block extendedtitle %}Archive{% endblock %}
 
 {% block altcontent %}
-<div class="darkbox" id="blogtoc">
+<div class="navbox" id="blogtoc">
 	<h1>Table of Contents</h1>
 	<ul>
 		{% for post in latest %}
@@ -12,7 +12,7 @@
 	</ul>
 
 	{% if date_list %}
-		<h1>Blog Archive</h1>
+		<h1>Archive</h1>
 
 		<ul>
 		{% for year in date_list %}
