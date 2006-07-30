@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-import blog.apps.blog.feeds
+from rockstar import blogfeeds
 
 # Base for all released things
 info_dict = {
@@ -10,10 +10,10 @@ info_dict = {
 }
 
 feeds = {
-    'full': blog.apps.blog.feeds.Full,
-    'summary': blog.apps.blog.feeds.Summary,
-    'fullunreleased': blog.apps.blog.feeds.Unreleased,
-    'comments': blog.apps.blog.feeds.Comments,
+    'full': blogfeeds.Full,
+    'summary': blogfeeds.Summary,
+    'fullunreleased': blogfeeds.Unreleased,
+    'comments': blogfeeds.Comments,
 }
 
 urlpatterns = patterns('',
