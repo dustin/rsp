@@ -37,7 +37,7 @@ MEDIA_URL = ''
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'ca0525a089d5066c981917361c24ae75'
 
-ROOT_URLCONF = 'blog.urls'
+ROOT_URLCONF = 'rockstar.urls'
 
 TEMPLATE_LOADERS = (
     'django.core.template.loaders.filesystem.load_template_source',
