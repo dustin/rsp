@@ -27,6 +27,7 @@ MEDIA_ROOT = ''
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.sessions.SessionMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
     "django.middleware.cache.CacheMiddleware",
 )
 
