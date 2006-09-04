@@ -5,9 +5,8 @@ Copyright (c) 2005  Dustin Sallings <dustin@spy.net>
 """
 
 from django.contrib.syndication.feeds import Feed
-from django.models.comments import freecomments
-from django.contrib.comments import feeds
-from django.models.blog import posts
+from django.contrib.comments.feeds import LatestFreeCommentsFeed
+from blog.apps.blog.models import Post
 
 class Full(Feed):
     title = "RockStarProgrammer - Full Posts"
@@ -24,8 +23,8 @@ class Full(Feed):
         return item.post_date
     
     def items(self):
-        return posts.get_list(released__exact=True,
-            order_by=('-post_date', '-id'), limit=10)
+        return Post.objects.filter(released__exact=True).order_by(
+            '-post_date', '-id')[:10]
 
 class Summary(Full):
     title = "RockStarProgrammer - Post Summaries"
@@ -34,9 +33,9 @@ class Unreleased(Full):
     title = "RockStarProgrammer - Unreleased"
     
     def items(self):
-        return posts.get_list(order_by=('-post_date', '-id'), limit=10)
+        return Posts.objects.order_by('-post_date', '-id')[:10]
 
-class Comments(feeds.LatestFreeCommentsFeed):
+class Comments(LatestFreeCommentsFeed):
     title = "RockStarProgrammer Recent Comments"
     description = "Recent comments at RockStarProgrammer"
 
