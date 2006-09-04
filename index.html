@@ -1,4 +1,4 @@
-{% extends "base-extended" %}
+{% extends "base-extended.html" %}
 
 {% block extendedtitle %}Archive{% endblock %}
 
@@ -31,7 +31,7 @@
 
 {% for post in latest %}
 
-	{% get_free_comment_count for blog.posts post.id as comment_count %}
+	{% get_free_comment_count for blog.post post.id as comment_count %}
 
 	<a name="post{{post.id}}"></a>
 	<div class="blogentry {% if not post.released %}unreleased{% endif %}">
