@@ -6,7 +6,7 @@ Copyright (c) 2005  Dustin Sallings <dustin@spy.net>
 
 from django.contrib.syndication.feeds import Feed
 from django.contrib.comments.feeds import LatestFreeCommentsFeed
-from blog.apps.blog.models import Post
+from rockstar.apps.blog.models import Post
 
 class Full(Feed):
     title = "RockStarProgrammer - Full Posts"

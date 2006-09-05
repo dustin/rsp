@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import *
-from blog.apps.blog.models import Post
-from blog import blogfeeds
+from rockstar.apps.blog.models import Post
+from rockstar import blogfeeds
 
 # Base for all released things
 info_dict = {
