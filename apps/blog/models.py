@@ -20,7 +20,7 @@ class Post(models.Model):
     contents=models.TextField()
 
     def get_full_path(self):
-        return '%s/%s' % \
+        return '%s/%s/' % \
             (self.post_date.strftime("%Y/%b/%d").lower(), self.slug)
 
     def get_absolute_url(self):
