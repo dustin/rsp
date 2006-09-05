@@ -23,7 +23,7 @@
 
 {% load comments %}
 
-{% get_free_comment_list for blog.post post.id as comment_list %}
+{% get_free_comment_list for blog.post object.id as comment_list %}
 
 <div id="commentContainer">
 
