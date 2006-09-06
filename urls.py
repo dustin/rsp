@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+from django.contrib.sitemaps import Sitemap, GenericSitemap
 from rockstar.apps.blog.models import Post
 from rockstar import blogfeeds
 
@@ -13,6 +14,21 @@ feeds = {
     'summary': blogfeeds.Summary,
     'fullunreleased': blogfeeds.Unreleased,
     'comments': blogfeeds.Comments,
+}
+
+class SpecificPage(Sitemap):
+    def __init__(self, path, priority=0.7, freq='daily'):
+        self.location=path
+        self.changefreq=freq
+        self.lastmod=Post.objects.latest('post_date').post_date
+        self.priority=priority
+
+    def items(self):
+        return [self]
+
+sitemaps = {
+    'index': SpecificPage('/'),
+    'blog': GenericSitemap(info_dict, priority=0.6),
 }
 
 urlpatterns = patterns('',
@@ -43,6 +59,8 @@ urlpatterns = patterns('',
         {'template_name': 'index.html',
             'queryset': Post.objects.all(), 'date_field': 'post_date'}),
     (r'^admin/', include('django.contrib.admin.urls')),
+    (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap',
+        {'sitemaps': sitemaps}),
     (r'^$', 'django.views.generic.date_based.archive_index',
         dict(info_dict, template_name='index.html', num_latest=10)),
 )
