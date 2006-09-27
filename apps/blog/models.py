@@ -10,6 +10,15 @@ class Tag(models.Model):
     class Admin:
         ordering = ['name']
 
+class MimeType(models.Model):
+    type = models.CharField(maxlength=64)
+
+    def __str__(self):
+        return self.type
+
+    class Admin:
+        ordering = ['type']
+
 class Post(models.Model):
 
     post_date=models.DateTimeField('date posted')
@@ -18,6 +27,9 @@ class Post(models.Model):
     tags=models.ManyToManyField(Tag)
     released=models.BooleanField()
     contents=models.TextField()
+    enclosure_url=models.CharField(maxlength=512, blank=True, null=True)
+    enclosure_length=models.IntegerField(blank=True, null=True)
+    enclosure_type=models.ForeignKey(MimeType, blank=True, null=True)
 
     def get_full_path(self):
         return '%s/%s/' % \

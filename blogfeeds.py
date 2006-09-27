@@ -19,6 +19,15 @@ class Full(Feed):
 
     author_link = 'http://bleu.west.spy.net/~dustin/'
 
+    def item_enclosure_url(self, item):
+        return item.enclosure_url
+
+    def item_enclosure_length(self, item):
+        return item.enclosure_length
+
+    def item_enclosure_mime_type(self, item):
+        return item.enclosure_type.type
+
     def item_pubdate(self, item):
         return item.post_date
     
@@ -33,7 +42,7 @@ class Unreleased(Full):
     title = "RockStarProgrammer - Unreleased"
     
     def items(self):
-        return Posts.objects.order_by('-post_date', '-id')[:10]
+        return Post.objects.order_by('-post_date', '-id')[:10]
 
 class Comments(LatestFreeCommentsFeed):
     title = "RockStarProgrammer Recent Comments"
