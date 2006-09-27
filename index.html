@@ -2,8 +2,7 @@
 
 {% block extendedtitle %}Archive{% endblock %}
 
-{% block altcontent %}
-<div class="navbox" id="blogtoc">
+{% block altnav %}
 	<h1>Table of Contents</h1>
 	<ul>
 		{% for post in latest %}
@@ -20,19 +19,6 @@
 		{% endfor %}
 		</ul>
 	{% endif %}
-	<h1>Feeds</h1>
-	<ul>
-		<li><a href="/rss/full/">full <img alt="rss"
-			src="/media/img/rss-icon.png"/></a></li>
-		<li><a href="/rss/summary/">summary <img
-			alt="rss" src="/media/img/rss-icon.png"/></a></li>
-		<li><a href="/rss/comments/">comments <img
-			alt="rss" src="/media/img/rss-icon.png"/></a></li>
-		<li><a href="pcast://www.rockstarprogrammer.org/rss/full/"><img
-			alt="podcast" title="podcast"  src="/media/img/podcast.png"/></a></li>
-	</ul>
-</div>
-
 {% endblock %}
 
 {% load comments %}
