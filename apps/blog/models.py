@@ -30,6 +30,7 @@ class Post(models.Model):
     enclosure_url=models.CharField(maxlength=512, blank=True, null=True)
     enclosure_length=models.IntegerField(blank=True, null=True)
     enclosure_type=models.ForeignKey(MimeType, blank=True, null=True)
+    enclosure_thumb=models.CharField(maxlength=512, blank=True, null=True)
 
     def get_full_path(self):
         return '%s/%s/' % \
