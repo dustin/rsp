@@ -38,6 +38,23 @@
 		<div class="date">{{post.post_date}}</div>
 		<div class="title"><a href="/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.slug}}/">{{post.title}}</a></div>
 		{{ post.contents }}
+		{% if post.enclosure_url %}
+			<div class="enclosure">
+				<h1>Enclosure</h1>
+				<p>
+					<a href="{{post.enclosure_url}}">
+					{% if post.enclosure_thumb %}
+						<img src="{{post.enclosure_thumb}}"
+							title="{{post.title}} enclosure"
+							alt="{{post.title}} enclosure"/>
+					{% else %}
+						{{post.title}} enclosure
+					{% endif %}
+					</a>
+					({{post.enclosure_type}}, {{post.enclosure_length|filesizeformat}})
+				</p>
+			</div>
+		{% endif %}
 		<p class="postmeta">
 			<a href="/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.slug}}/#comments">
 			{{ comment_count }} comment{{ comment_count|pluralize }}
