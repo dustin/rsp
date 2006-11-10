@@ -5,6 +5,7 @@
 {% block altnav %}
 	<h1>Table of Contents</h1>
 	<ul>
+		<li id="aboutlink"><a href="/post/2006/jul/28/greetings/">About</a></li>
 		{% for post in latest %}
 			<li><a href="#post{{post.id}}">{{post.title}}</a></li>
 		{% endfor %}
