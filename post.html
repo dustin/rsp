@@ -16,12 +16,12 @@
 {% block content %}
 <div class="blogentry {% if not object.released %}unreleased{% endif %}">
 	<div class="date">{{object.post_date}}</div>
-	<div class="title">{{object.title}}</div>
+	<h1 class="title">{{object.title}}</h1>
 
 	{{object.contents}}
 	{% if object.enclosure_url %}
 		<div class="enclosure">
-			<h1>Enclosure</h1>
+			<h2>Enclosure</h2>
 			<p>
 				<a href="{{object.enclosure_url}}">
 				{% if object.enclosure_thumb %}

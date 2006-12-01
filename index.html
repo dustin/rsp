@@ -33,11 +33,11 @@
 	<a name="post{{post.id}}"></a>
 	<div class="blogentry {% if not post.released %}unreleased{% endif %}">
 		<div class="date">{{post.post_date}}</div>
-		<div class="title"><a href="/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.slug}}/">{{post.title}}</a></div>
+		<h1 class="title"><a href="/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.slug}}/">{{post.title}}</a></h1>
 		{{ post.contents }}
 		{% if post.enclosure_url %}
 			<div class="enclosure">
-				<h1>Enclosure</h1>
+				<h2>Enclosure</h2>
 				<p>
 					<a href="{{post.enclosure_url}}">
 					{% if post.enclosure_thumb %}
