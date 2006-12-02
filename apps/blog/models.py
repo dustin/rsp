@@ -26,6 +26,7 @@ class Post(models.Model):
     slug=models.SlugField(prepopulate_from=['title'])
     tags=models.ManyToManyField(Tag)
     released=models.BooleanField()
+    comments_allowed=models.BooleanField()
     contents=models.TextField()
     enclosure_url=models.CharField(maxlength=512, blank=True, null=True)
     enclosure_length=models.IntegerField(blank=True, null=True)
