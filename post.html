@@ -59,10 +59,16 @@
 </div>
 {% endfor %}
 
+{% if object.comments_allowed %}
 <h2>Post a Comment</h2>
 <div id="commentform">
 {% free_comment_form for blog.post object.id %}
 </div>
+{% else %} 
+	<div class="nocomments">
+		New comments are not being accepted for this post.
+	</div>
+{% endif %}
 
 </div>
 
