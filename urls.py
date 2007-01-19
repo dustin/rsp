@@ -44,6 +44,9 @@ urlpatterns = patterns('',
         'django.views.generic.date_based.object_detail',
             dict(info_dict, template_name='post.html', slug_field='slug',)),
 
+    (r'^xml_rpc_srv/$', 'rockstar.apps.blog.xmlrpc.rpc_handler'),
+    (r'^edituri/rsd.xml$', 'rockstar.apps.blog.xmlrpc.edituri'),
+
     # Django RSS
     # The following two are for backwards compatibility.
     (r'^rss/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',
