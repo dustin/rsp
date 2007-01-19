@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<rsd version="1.0" xmlns="http://archipelago.phrasewise.com/rsd">
+	<service>
+		<engineName>Westspy Blog</engineName>
+		<engineLink>http://{{ domain }}/</engineLink>
+		<homePageLink>http://{{ domain }}/{{ blog }}/</homePageLink>
+		<apis>
+			<api name="MetaWeblog" preferred="true"
+				blogID="{{ blog }}"
+				apiLink="http://{{ domain }}/xml_rpc_srv/"/>
+		</apis>
+	</service>
+</rsd>
