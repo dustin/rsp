@@ -7,8 +7,11 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
-    class Admin:
+    class Meta:
         ordering = ['name']
+
+    class Admin:
+        pass
 
 class MimeType(models.Model):
     type = models.CharField(maxlength=64)
@@ -16,8 +19,11 @@ class MimeType(models.Model):
     def __str__(self):
         return self.type
 
-    class Admin:
+    class Meta:
         ordering = ['type']
+
+    class Admin:
+        pass
 
 class Post(models.Model):
 
@@ -43,9 +49,10 @@ class Post(models.Model):
     def __str__(self):
         return self.title + " on " + self.post_date.ctime()
 
-    class Admin:
-
+    class Meta:
         ordering = ['-post_date', '-id']
+
+    class Admin:
         search_fields=('title', 'contents',)
         list_filter=('post_date', 'released',)
         list_display=('post_date', 'title', 'slug', 'released',)
