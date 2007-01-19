@@ -1,6 +1,9 @@
 {% extends "base-extended.html" %}
 {% block extendedtitle %}{{object.title}}{% endblock %}
 
+{% load comments %}
+{% load markup %}
+
 {% block extrastyle %}
 <style type="text/css">
 .comment {
@@ -18,7 +21,7 @@
 	<div class="date">{{object.post_date}}</div>
 	<h1 class="title">{{object.title}}</h1>
 
-	{{object.contents}}
+	{{object.contents|markdown}}
 	{% if object.enclosure_url %}
 		<div class="enclosure">
 			<h2>Enclosure</h2>
@@ -37,8 +40,6 @@
 		</div>
 		{% endif %}
 </div>
-
-{% load comments %}
 
 {% get_free_comment_list for blog.post object.id as comment_list %}
 
