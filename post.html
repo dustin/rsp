@@ -2,7 +2,6 @@
 {% block extendedtitle %}{{object.title}}{% endblock %}
 
 {% load comments %}
-{% load markup %}
 
 {% block extrastyle %}
 <style type="text/css">
@@ -21,7 +20,7 @@
 	<div class="date">{{object.post_date}}</div>
 	<h1 class="title">{{object.title}}</h1>
 
-	{{object.contents|markdown}}
+	{{object.contents }}
 	{% if object.enclosure_url %}
 		<div class="enclosure">
 			<h2>Enclosure</h2>
