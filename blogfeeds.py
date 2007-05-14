@@ -6,7 +6,7 @@ Copyright (c) 2005  Dustin Sallings <dustin@spy.net>
 
 from django.contrib.syndication.feeds import Feed
 from django.contrib.comments.feeds import LatestFreeCommentsFeed
-from rockstar.apps.blog.models import Post
+from rockstar.apps.blog.models import Post, Tag
 
 class Full(Feed):
     title = "RockStarProgrammer - Full Posts"
@@ -18,6 +18,10 @@ class Full(Feed):
     author_email = 'dustin@spy.net'
 
     author_link = 'http://bleu.west.spy.net/~dustin/'
+
+    # Invoked when there's extra URL stuff.
+    def get_object(self, bits):
+        return Tag.objects.filter(name__in=bits[0].split('+'))
 
     def item_enclosure_url(self, item):
         return item.enclosure_url
@@ -31,9 +35,11 @@ class Full(Feed):
     def item_pubdate(self, item):
         return item.post_date
     
-    def items(self):
-        return Post.objects.filter(released__exact=True).order_by(
-            '-post_date', '-id')[:10]
+    def items(self, obj):
+        sel=Post.objects.filter(released__exact=True)
+        if obj:
+            sel=sel.filter(tags__in=obj)
+        return sel.order_by('-post_date', '-id')[:10]
 
 class Summary(Full):
     title = "RockStarProgrammer - Post Summaries"
