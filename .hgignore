@@ -1,0 +1,7 @@
+(^|/)\_darcs($|/)
+(^|/)\.hg($|/)
+(^|/)\.hgtags($|/)
+^rockstar.log$
+^rockstar.state$
+^rockstar.state.old$
+^rockstar.state.journal$
