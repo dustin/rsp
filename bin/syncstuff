@@ -1,0 +1,7 @@
+#!/bin/sh
+
+chmod -R u+rwX,g+rX,o+rX code templates
+
+rsync -vaSe ssh --delete code/ basket.west.spy.net:/data/web/django/rockstar/
+rsync -vaSe ssh --delete \
+	templates/ basket.west.spy.net:/data/web/django/templates/rockstar
