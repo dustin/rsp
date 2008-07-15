@@ -1,5 +1,5 @@
 {% extends "base-extended.html" %}
-{% block extendedtitle %}{{object.title}}{% endblock %}
+{% block extendedtitle %}{{object.title|safe}}{% endblock %}
 
 {% load comments %}
 
@@ -18,9 +18,9 @@
 {% block content %}
 <div class="blogentry {% if not object.released %}unreleased{% endif %}">
 	<div class="date">{{object.post_date}}</div>
-	<h1 class="title">{{object.title}}</h1>
+	<h1 class="title">{{object.title|safe}}</h1>
 
-	{{object.contents }}
+	{{object.contents|safe }}
 	{% if object.enclosure_url %}
 		<div class="enclosure">
 			<h2>Enclosure</h2>
@@ -28,10 +28,10 @@
 				<a href="{{object.enclosure_url}}">
 				{% if object.enclosure_thumb %}
 					<img src="{{object.enclosure_thumb}}"
-						title="{{object.title}} enclosure"
-						alt="{{object.title}} enclosure"/>
+						title="{{object.title|safe}} enclosure"
+						alt="{{object.title|safe}} enclosure"/>
 				{% else %}
-					{{object.title}} enclosure
+					{{object.title|safe}} enclosure
 				{% endif %}
 				</a>
 				({{object.enclosure_type}}, {{object.enclosure_length|filesizeformat}})
