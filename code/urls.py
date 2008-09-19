@@ -12,8 +12,7 @@ info_dict = {
 feeds = {
     'full': blogfeeds.Full,
     'summary': blogfeeds.Summary,
-    'fullunreleased': blogfeeds.Unreleased,
-    'comments': blogfeeds.Comments,
+    'fullunreleased': blogfeeds.Unreleased
 }
 
 class SpecificPage(Sitemap):
@@ -48,8 +47,6 @@ urlpatterns = patterns('',
     # The following two are for backwards compatibility.
     (r'^rss/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',
         {'feed_dict': feeds}),
-
-    (r'^comments/', include('django.contrib.comments.urls.comments')),
 
     (r'^all/', 'django.views.generic.date_based.archive_index',
         {'template_name': 'index.html',

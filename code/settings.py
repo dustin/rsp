@@ -82,7 +82,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.flatpages',
     'django.contrib.redirects',
-    'django.contrib.comments',
     'django.contrib.sitemaps',
     'django.contrib.markup',
     'rockstar.apps.blog',

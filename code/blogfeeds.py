@@ -5,7 +5,6 @@ Copyright (c) 2005  Dustin Sallings <dustin@spy.net>
 """
 
 from django.contrib.syndication.feeds import Feed
-from django.contrib.comments.feeds import LatestFreeCommentsFeed
 from rockstar.apps.blog.models import Post, Tag
 
 class Full(Feed):
@@ -49,13 +48,3 @@ class Unreleased(Full):
     
     def items(self):
         return Post.objects.order_by('-post_date', '-id')[:10]
-
-class Comments(LatestFreeCommentsFeed):
-    title = "RockStarProgrammer Recent Comments"
-    description = "Recent comments at RockStarProgrammer"
-
-    def item_author_name(self, item):
-        return item.person_name
-
-    def item_pubdate(self, item):
-        return item.submit_date

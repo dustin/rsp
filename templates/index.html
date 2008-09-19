@@ -2,8 +2,6 @@
 
 {% block extendedtitle %}Recent Posts{% endblock %}
 
-{% load comments %}
-
 {% block altnav %}
 	<h1>Table of Contents</h1>
 	<ul>
@@ -28,8 +26,6 @@
 
 {% for post in latest %}
 
-	{% get_free_comment_count for blog.post post.id as comment_count %}
-
 	<a name="post{{post.id}}"></a>
 	<div class="blogentry {% if not post.released %}unreleased{% endif %}">
 		<div class="date">{{post.post_date}}</div>
@@ -53,11 +49,26 @@
 			</div>
 		{% endif %}
 		<p class="postmeta">
-			<a href="/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.slug}}/#comments">
-			{{ comment_count }} comment{{ comment_count|pluralize }}
-			</a>
+			<a href="/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.slug}}/#disqus_thread">Comments</a>
 		</p>
 	</div>
 {% endfor %}
 
+{% endblock %}
+
+{% block bottom %}
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+		var links = document.getElementsByTagName('a');
+		var query = '?';
+		for(var i = 0; i < links.length; i++) {
+			if(links[i].href.indexOf('#disqus_thread') >= 0) {
+				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+			}
+		}
+		document.write('<script type="text/javascript" src="http://disqus.com/forums/rsp/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
 {% endblock %}
