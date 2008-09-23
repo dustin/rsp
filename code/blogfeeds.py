@@ -20,7 +20,10 @@ class Full(Feed):
 
     # Invoked when there's extra URL stuff.
     def get_object(self, bits):
-        return Tag.objects.filter(name__in=bits[0].split('+'))
+        rv = None
+        if bits:
+            rv=Tag.objects.filter(name__in=bits[0].split('+'))
+        return rv
 
     def item_enclosure_url(self, item):
         return item.enclosure_url
