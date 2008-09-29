@@ -1,7 +1,10 @@
 #!/bin/sh
 
-chmod -R u+rwX,g+rX,o+rX code templates
+chmod -R u+rwX,g+rX,o+rX code templates media
 
 rsync -vaSe ssh --delete code/ basket.west.spy.net:/data/web/django/rockstar/
 rsync -vaSe ssh --delete \
 	templates/ basket.west.spy.net:/data/web/django/templates/rockstar
+rsync -vaSe ssh --delete --exclude=stats/ \
+	media/ \
+	basket.west.spy.net:/data/web/purple-virts/www.rockstarprogrammer.org/media/
