@@ -1,0 +1,185 @@
+html {
+  background: black;
+}
+
+body {
+  background: white url(/media/logo.png) no-repeat;
+  padding: 0px;
+  padding-top: 107px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 720px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+	background: #ddf;
+}
+
+a img {
+	border: none;
+}
+
+#aboutlink {
+	margin-bottom: 1em;
+}
+
+h1 { font-size: 135%; }
+h2 { font-size: 115%; }
+h3 { font-size: 100%; }
+
+.navbox {
+  width: 198px;
+  border-top: solid 1px black;
+  padding-left: 2px;
+}
+
+.navbox ul {
+  margin: 0;
+  padding: 0;
+  width: 190px;
+  color: white;
+}
+
+.navbox h1 {
+  font-size: medium;
+}
+
+.navbox img {
+	border: none;
+}
+
+#navbar {
+  /* I liked the absolute, but IE won't do it right, so try floats.
+  position: absolute;
+  */
+  clear: left;
+  float: left;
+  padding-top: 5px;
+}
+
+#blogtoc {
+  /* I liked the absolute, but IE won't do it right, so try floats.
+  position: absolute;
+  */
+  clear: left;
+  float: left;
+  top: 177px;
+}
+
+#maincontent {
+  margin-left: 200px;
+  border-left: solid black 1px;
+  border-top: solid 1px black;
+  margin-bottom: 0;
+}
+
+.blogentry {
+  clear: right;
+  padding: 0;
+}
+
+.blogentry p {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.blogentry .title {
+  display: block;
+  margin: 0;
+  border-top: solid 1px black;
+}
+
+.blogentry .date {
+  color: #555;
+  font-size: small;
+}
+
+.unreleased {
+	background: #fcc;
+}
+
+.booktitle {
+	text-decoration: underline;
+}
+
+pre {
+	/* Opera decided to make the font bigger here than the other browsers */
+	font-size: 10pt;
+	border: dashed 1px green;
+	margin-left: 5px;
+	margin-right: 5px;
+	padding: 5px;
+	background: #222;
+	color: green;
+	overflow: hidden;
+}
+
+#commentContainer {
+	border-top: solid 1px black;
+}
+
+#commentContainer h2 {
+  font-size: medium;
+}
+
+#commentform {
+  font-size: smaller;
+}
+
+.enclosure {
+  margin: auto;
+  width: 250px;
+  border: solid 1px black;
+  padding: 0;
+  background: #ffc;
+  text-align: center;
+}
+
+.enclosure p {
+	padding: 5px 2px 0 2px;;
+	margin: 0;
+}
+
+.enclosure h1 {
+	margin: 0;
+	padding: 1px;
+	border-bottom: solid 1px black;
+	text-align: right;
+	font-size: medium;
+	font-weight: bold;
+	font-style: italic;
+}
+
+tbody {
+	vertical-align: top;
+}
+
+.enclosure img {
+  display: block;
+  margin: auto;
+}
+
+.nocomments {
+	font-style: italic;
+}
+
+/* This shows up around comments.  Don't treat it like a link */
+a[name]:hover {
+	background: white;
+}
+
+#footer {
+	clear: both;
+	text-align: center;
+	font-size: xx-small;
+	background: black;
+	color: #333;
+}
+
+#ads {
+	display: none;
+}
