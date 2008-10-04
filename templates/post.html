@@ -6,7 +6,13 @@
 	<div class="date">{{object.post_date}}</div>
 	<h1 class="title">{{object.title|safe}}</h1>
 
-	{{object.contents|safe }}
+	{% ifequal object.format 2 %}
+		{% load markup %}
+		{{object.contents|markdown }}
+	{% else %}
+		{{object.contents|safe }}
+	{% endifequal %}
+
 	{% if object.enclosure_url %}
 		<div class="enclosure">
 			<h2>Enclosure</h2>

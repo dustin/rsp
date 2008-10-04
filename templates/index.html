@@ -2,6 +2,8 @@
 
 {% block extendedtitle %}Recent Posts{% endblock %}
 
+{% load markup %}
+
 {% block altnav %}
 	<h1>Table of Contents</h1>
 	<ul>
@@ -30,7 +32,13 @@
 	<div class="blogentry {% if not post.released %}unreleased{% endif %}">
 		<div class="date">{{post.post_date}}</div>
 		<h1 class="title"><a href="/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.slug}}/">{{post.title|safe}}</a></h1>
-		{{ post.contents|safe }}
+
+		{% ifequal post.format 2 %}
+			{{post.contents|markdown }}
+		{% else %}
+			{{post.contents|safe }}
+		{% endifequal %}
+
 		{% if post.enclosure_url %}
 			<div class="enclosure">
 				<h2>Enclosure</h2>

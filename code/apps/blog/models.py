@@ -1,5 +1,10 @@
 from django.db import models
 
+FORMATS=(
+    (1, 'html'),
+    (2, 'markdown')
+    )
+
 class Tag(models.Model):
 
     name = models.CharField(maxlength=32)
@@ -32,8 +37,8 @@ class Post(models.Model):
     slug=models.SlugField(prepopulate_from=['title'])
     tags=models.ManyToManyField(Tag)
     released=models.BooleanField()
-    comments_allowed=models.BooleanField()
     contents=models.TextField()
+    format=models.IntegerField(choices=FORMATS, default=1)
     enclosure_url=models.CharField(maxlength=512, blank=True, null=True)
     enclosure_length=models.IntegerField(blank=True, null=True)
     enclosure_type=models.ForeignKey(MimeType, blank=True, null=True)
