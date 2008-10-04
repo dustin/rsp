@@ -28,7 +28,11 @@ a img {
 }
 
 h1 { font-size: 135%; }
-h2 { font-size: 115%; }
+h2 {
+	font-size: 115%;
+	border-bottom: dotted 1px #999;
+	padding-bottom: 7px;
+}
 h3 { font-size: 100%; }
 
 .navbox {
