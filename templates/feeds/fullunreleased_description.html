@@ -1,1 +1,6 @@
-{{obj.contents|safe}}
+{% load markup %}
+{% ifequal obj.format 2 %}
+	{{obj.contents|markdown }}
+{% else %}
+	{{obj.contents|safe }}
+{% endifequal %}
