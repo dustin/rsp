@@ -4,3 +4,5 @@
 {% else %}
 	{{obj.contents|safe }}
 {% endifequal %}
+
+<a href="/post/{{obj.post_date|date:"Y/M/d"|lower}}/{{obj.slug}}/#disqus_thread">Comments</a>
