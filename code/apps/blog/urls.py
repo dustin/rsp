@@ -10,7 +10,6 @@ feeds = {
     'full': blogfeeds.Full,
     'summary': blogfeeds.Summary,
     'fullunreleased': blogfeeds.Unreleased,
-    'comments': blogfeeds.Comments,
 }
 
 urlpatterns = patterns('',
