@@ -7,7 +7,7 @@ ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
 
-CACHE_BACKEND = 'memcached://purple:11211/'
+CACHE_BACKEND = 'memcached://red:11211/'
 CACHE_MIDDLEWARE_SECONDS = 30
 CACHE_MIDDLEWARE_KEY_PREFIX = 'rockstar'
 
