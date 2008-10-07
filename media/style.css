@@ -83,7 +83,7 @@ h3 { font-size: 100%; }
 
 .blogentry {
   clear: right;
-  padding: 0;
+  padding: 0 5px 0 0;
 }
 
 .blogentry p {
@@ -174,6 +174,10 @@ tbody {
 /* This shows up around comments.  Don't treat it like a link */
 a[name]:hover {
 	background: white;
+}
+
+#disqus_thread {
+	padding: 0 10px 0 0;
 }
 
 #footer {
