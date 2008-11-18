@@ -12,24 +12,6 @@
 	{% else %}
 		{{object.contents|safe }}
 	{% endifequal %}
-
-	{% if object.enclosure_url %}
-		<div class="enclosure">
-			<h2>Enclosure</h2>
-			<p>
-				<a href="{{object.enclosure_url}}">
-				{% if object.enclosure_thumb %}
-					<img src="{{object.enclosure_thumb}}"
-						title="{{object.title|safe}} enclosure"
-						alt="{{object.title|safe}} enclosure"/>
-				{% else %}
-					{{object.title|safe}} enclosure
-				{% endif %}
-				</a>
-				({{object.enclosure_type}}, {{object.enclosure_length|filesizeformat}})
-			</p>
-		</div>
-		{% endif %}
 </div>
 
 <div id="disqus_thread"></div><script type="text/javascript"

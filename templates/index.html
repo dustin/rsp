@@ -39,23 +39,6 @@
 			{{post.contents|safe }}
 		{% endifequal %}
 
-		{% if post.enclosure_url %}
-			<div class="enclosure">
-				<h2>Enclosure</h2>
-				<p>
-					<a href="{{post.enclosure_url}}">
-					{% if post.enclosure_thumb %}
-						<img src="{{post.enclosure_thumb}}"
-							title="{{post.title|safe}} enclosure"
-							alt="{{post.title|safe}} enclosure"/>
-					{% else %}
-						{{post.title}} enclosure
-					{% endif %}
-					</a>
-					({{post.enclosure_type}}, {{post.enclosure_length|filesizeformat}})
-				</p>
-			</div>
-		{% endif %}
 		<p class="postmeta">
 			<a href="/post/{{post.post_date|date:"Y/M/d"|lower}}/{{post.slug}}/#disqus_thread">Comments</a>
 		</p>

@@ -134,37 +134,8 @@ pre {
   font-size: smaller;
 }
 
-.enclosure {
-  margin: auto;
-  width: 250px;
-  border: solid 1px black;
-  padding: 0;
-  background: #ffc;
-  text-align: center;
-}
-
-.enclosure p {
-	padding: 5px 2px 0 2px;;
-	margin: 0;
-}
-
-.enclosure h1 {
-	margin: 0;
-	padding: 1px;
-	border-bottom: solid 1px black;
-	text-align: right;
-	font-size: medium;
-	font-weight: bold;
-	font-style: italic;
-}
-
 tbody {
 	vertical-align: top;
-}
-
-.enclosure img {
-  display: block;
-  margin: auto;
 }
 
 .nocomments {

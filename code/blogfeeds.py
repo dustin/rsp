@@ -25,15 +25,6 @@ class Full(Feed):
             rv=Tag.objects.filter(name__in=bits[0].split('+'))
         return rv
 
-    def item_enclosure_url(self, item):
-        return item.enclosure_url
-
-    def item_enclosure_length(self, item):
-        return item.enclosure_length
-
-    def item_enclosure_mime_type(self, item):
-        return item.enclosure_type.type
-
     def item_pubdate(self, item):
         return item.post_date
     
