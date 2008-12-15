@@ -7,8 +7,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
 		<title>{% block title %}RockStarProgrammer{% endblock %}</title>
-		<link rel="stylesheet" title="Default"
-			href="/media/style.css"/>
+		<link rel="stylesheet" title="Default" href="/media/style.css"/>
+		<link rel="stylesheet" href="/media/css/prettify.css"/>
 		<link rel="alternate" type="application/rss+xml"
 			title="RockStarProgrammer Blog" href="/rss/full/"/>
 		<link rel="alternate" type="application/rss+xml"
@@ -17,8 +17,17 @@
 			title="New Comments" href="http://rsp.disqus.com/comments.rss"/>
 		<script type="text/javascript"
 			src="http://public.west.spy.net/ufo.js"></script>
+		<script type="text/javascript"
+			src="http://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript" src="/media/js/prettify.js"></script>
 		<meta name="verify-v1"
 			content="jVsLhw7ibSertdE8zy5r2jNIsGnNlcAwSQhpvKmGJlI=" />
+		<script type="text/javascript">
+			$('body').ready(function() {
+				$('pre').addClass('prettyprint');
+				prettyPrint();
+			});
+		</script>
 		{% block extrastyle %}{% endblock %}
 	</head>
 
