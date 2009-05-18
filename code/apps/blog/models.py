@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 
 FORMATS=(
     (1, 'html'),
@@ -22,7 +23,7 @@ class Post(models.Model):
 
     post_date=models.DateTimeField('date posted')
     title=models.CharField(max_length=128)
-    slug=models.SlugField(prepopulate_from=['title'])
+    slug=models.CharField(max_length=128)
     tags=models.ManyToManyField(Tag)
     released=models.BooleanField()
     contents=models.TextField()
@@ -41,8 +42,11 @@ class Post(models.Model):
     class Meta:
         ordering = ['-post_date', '-id']
 
-    class Admin:
-        search_fields=('title', 'contents',)
-        list_filter=('post_date', 'released',)
-        list_display=('post_date', 'title', 'slug', 'released',)
+class PostAdmin(admin.ModelAdmin):
+    search_fields=('title', 'contents',)
+    list_filter=('post_date', 'released',)
+    list_display=('post_date', 'title', 'slug', 'released',)
+    prepopulated_fields = {'slug': ('title',)}
+
+admin.site.register(Post, PostAdmin)
 
