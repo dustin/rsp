@@ -7,7 +7,7 @@ FORMATS=(
 
 class Tag(models.Model):
 
-    name = models.CharField(maxlength=32)
+    name = models.CharField(max_length=32)
 
     def __str__(self):
         return self.name
@@ -21,7 +21,7 @@ class Tag(models.Model):
 class Post(models.Model):
 
     post_date=models.DateTimeField('date posted')
-    title=models.CharField(maxlength=128)
+    title=models.CharField(max_length=128)
     slug=models.SlugField(prepopulate_from=['title'])
     tags=models.ManyToManyField(Tag)
     released=models.BooleanField()
